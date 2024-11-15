@@ -33,7 +33,7 @@ namespace MinimalApi.Infraestrutura.Db
                 }
             }
         }
-    
+        
 
     }
 }
