@@ -16,6 +16,7 @@ builder.Services.AddDbContext<DbContexto>(options =>
 });
 
 builder.Services.AddScoped<IAdministradorServico, AdministradorServico> ();
+builder.Services.AddScoped<IVeiculoServico, VeiculoServico> ();
 
 var app = builder.Build();
 app.MapGet("/", () => "Hello World!");
@@ -26,6 +27,29 @@ app.MapPost("/login",([FromBody] LoginDTO loginDTO , IAdministradorServico admin
         return Results.Ok("Login com sucesso");
     else
         return Results.Unauthorized();
+});
+
+app.MapPost("/veiculos",([FromBody] VeiculoDTO veiculoDTO, IVeiculoServico veiculoServico ) =>
+{
+  if(String.IsNullOrEmpty(veiculoDTO.Nome) && 
+    String.IsNullOrEmpty(veiculoDTO.Marca) &&
+    veiculoDTO.Ano > 0)
+    return Results.NotFound();
+
+  Veiculo veiculo = new Veiculo();
+  veiculo.Nome = veiculoDTO.Nome;
+  veiculo.Marca = veiculoDTO.Marca;
+  veiculo.Ano = veiculoDTO.Ano;
+
+  veiculoServico.Incluir(veiculo);
+  return Results.Ok(veiculo);
+
+});
+
+app.MapGet("/veiculos",(IVeiculoServico veiculoServico ) => 
+{
+    var veiculos = veiculoServico.Todos();
+    return Results.Ok(veiculos);
 });
 
 app.Run();
