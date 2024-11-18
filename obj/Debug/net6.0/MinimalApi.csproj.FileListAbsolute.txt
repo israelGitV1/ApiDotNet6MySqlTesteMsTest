@@ -29,3 +29,8 @@
 /home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/MySqlConnector.dll
 /home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
 /home/israel/DevelopmentClone/MinimalApi/obj/Debug/net6.0/MinimalApi.csproj.CopyComplete
+/home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Microsoft.OpenApi.dll
+/home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/israel/DevelopmentClone/MinimalApi/obj/Debug/net6.0/MinimalApi.MvcApplicationPartsAssemblyInfo.cs

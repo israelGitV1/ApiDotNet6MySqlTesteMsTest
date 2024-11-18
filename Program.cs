@@ -4,8 +4,11 @@ using Microsoft.Extensions.FileProviders;
 using MinimalApi.Dominio.DTOs;
 using MinimalApi.Dominio.Entidades;
 using MinimalApi.Dominio.Interfaces;
+using MinimalApi.Dominio.ModelViews;
 using MinimalApi.Dominio.Servicos;
 using MinimalApi.Infraestrutura.Db;
+
+#region Builder
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +21,20 @@ builder.Services.AddDbContext<DbContexto>(options =>
 builder.Services.AddScoped<IAdministradorServico, AdministradorServico> ();
 builder.Services.AddScoped<IVeiculoServico, VeiculoServico> ();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
-app.MapGet("/", () => "Hello World!");
+
+#endregion
+
+#region Home
+
+app.MapGet("/", () => Results.Json(new Home()));
+
+#endregion
+
+#region Administrador
 
 app.MapPost("/login",([FromBody] LoginDTO loginDTO , IAdministradorServico administradorServico) =>
 {
@@ -28,6 +43,10 @@ app.MapPost("/login",([FromBody] LoginDTO loginDTO , IAdministradorServico admin
     else
         return Results.Unauthorized();
 });
+
+#endregion
+
+#region Veiculos
 
 app.MapPost("/veiculos",([FromBody] VeiculoDTO veiculoDTO, IVeiculoServico veiculoServico ) =>
 {
@@ -52,5 +71,12 @@ app.MapGet("/veiculos",(IVeiculoServico veiculoServico ) =>
     return Results.Ok(veiculos);
 });
 
+#endregion
+
+#region App
+
+app.UseSwagger();
+app.UseSwaggerUI();
 app.Run();
 
+#endregion
