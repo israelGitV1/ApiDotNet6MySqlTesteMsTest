@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Wi23bpOBsQV4jR/88yGSol/gOIFQVDb/Zq4wTruUpHVRh5Pnm/ruBGSUYYf6yEYanYcbX71LeGpUdrkgSu+zgg==",
+  "dgSpecHash": "YtZbG6Y4Iq0K3Az6YYdG3IB2XQA/9CgjTHWCN3kQriSeTB9vBwCPG+P786EFCYbEtoD/2M+b/VoH/DRZa9DL9w==",
   "success": true,
   "projectFilePath": "/home/israel/DevelopmentClone/MinimalApi/MinimalApi.csproj",
   "expectedPackageFiles": [
@@ -11,7 +11,7 @@
     "/home/israel/.nuget/packages/microsoft.entityframeworkcore.design/6.0.13/microsoft.entityframeworkcore.design.6.0.13.nupkg.sha512",
     "/home/israel/.nuget/packages/microsoft.entityframeworkcore.relational/6.0.13/microsoft.entityframeworkcore.relational.6.0.13.nupkg.sha512",
     "/home/israel/.nuget/packages/microsoft.entityframeworkcore.tools/6.0.13/microsoft.entityframeworkcore.tools.6.0.13.nupkg.sha512",
-    "/home/israel/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/home/israel/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/home/israel/.nuget/packages/microsoft.extensions.caching.abstractions/6.0.0/microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "/home/israel/.nuget/packages/microsoft.extensions.caching.memory/6.0.1/microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
     "/home/israel/.nuget/packages/microsoft.extensions.configuration.abstractions/6.0.0/microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
@@ -24,10 +24,10 @@
     "/home/israel/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
     "/home/israel/.nuget/packages/mysqlconnector/2.1.2/mysqlconnector.2.1.2.nupkg.sha512",
     "/home/israel/.nuget/packages/pomelo.entityframeworkcore.mysql/6.0.1/pomelo.entityframeworkcore.mysql.6.0.1.nupkg.sha512",
-    "/home/israel/.nuget/packages/swashbuckle.aspnetcore/6.0.1/swashbuckle.aspnetcore.6.0.1.nupkg.sha512",
-    "/home/israel/.nuget/packages/swashbuckle.aspnetcore.swagger/6.0.1/swashbuckle.aspnetcore.swagger.6.0.1.nupkg.sha512",
-    "/home/israel/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.0.1/swashbuckle.aspnetcore.swaggergen.6.0.1.nupkg.sha512",
-    "/home/israel/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.0.1/swashbuckle.aspnetcore.swaggerui.6.0.1.nupkg.sha512",
+    "/home/israel/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "/home/israel/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "/home/israel/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "/home/israel/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
     "/home/israel/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
     "/home/israel/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "/home/israel/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
