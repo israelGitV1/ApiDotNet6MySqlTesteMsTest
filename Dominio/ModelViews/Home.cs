@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MinimalApi.Dominio.ModelViews
 {
-    public class Home
+    public struct Home
     {
         public string Mensagem {get => "Bem vindo a API de Veiculos! ";}
         public string DOC {get => "/swagger";}
