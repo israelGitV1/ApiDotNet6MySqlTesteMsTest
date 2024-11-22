@@ -140,7 +140,12 @@ app.MapPost("/administrador",([FromBody] AdministradorDTO administradorDTO, IAdm
     Perfil = administradorDTO.Perfil,
   };
   administradorServico.Incluir(administrador);
-  return Results.Created($"/administrador/{administrador.Id}",administrador);
+  return Results.Created($"/administrador/{administrador.Id}",new AdministradorModelView
+  {
+    Id = administrador.Id,
+    Email = administrador.Email,
+    Perfil = administrador.Perfil,
+  });
 
 })
 .RequireAuthorization().WithTags("Administradores");
@@ -163,7 +168,16 @@ app.MapGet("/administrador",([FromQuery] int? pagina ,IAdministradorServico admi
   if(administradores == null)
     return Results.NotFound();
 
-  return Results.Ok(administradores);
+  var administradorModelView = new List<AdministradorModelView>();
+  foreach( var administrador in administradores)
+  {
+    administradorModelView.Add(new AdministradorModelView{
+      Id = administrador.Id,
+      Email = administrador.Email,
+      Perfil = administrador.Perfil,
+    });
+  }
+  return Results.Ok(administradorModelView);
 })
 .RequireAuthorization().WithTags("Administradores");
 #endregion
