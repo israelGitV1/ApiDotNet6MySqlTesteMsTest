@@ -1,4 +1,7 @@
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -59,6 +62,25 @@ app.MapGet("/", () => Results.Json(new Home())).WithTags("Home");
 
 #region Administrador
 
+string GerarTokenJwt(Administrador administrador)
+{
+  var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+  var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+  var clamis = new List<Claim>()
+  {
+    new Claim("Email", administrador.Email),
+    new Claim("Perfil", administrador.Perfil),
+  };
+  var token = new JwtSecurityToken(
+    claims : clamis,
+    expires : DateTime.Now.AddDays(1),
+    signingCredentials : credentials  
+  );
+
+  return new JwtSecurityTokenHandler().WriteToken(token);
+} 
+
 ErrosDeValidacao ValidaLoginDTO (LoginDTO loginDTO)
 {
   var validacao = new ErrosDeValidacao { Mensagens = new List<string>()};
@@ -88,8 +110,18 @@ app.MapPost("/login",([FromBody] LoginDTO loginDTO , IAdministradorServico admin
   if(validacao.Mensagens.Count > 0)
     return Results.BadRequest(validacao);
 
-    if(administradorServico.Login(loginDTO) != null)
-        return Results.Ok("Login com sucesso");
+  var administrador = administradorServico.Login(loginDTO);
+
+    if(administrador != null)
+    {
+        string token = GerarTokenJwt(administrador);
+        return Results.Ok(new AdministradorLogado
+        {
+          Email = administrador.Email,
+          Perfil = administrador.Perfil,
+          Token = token,
+        });
+    }
     else
         return Results.Unauthorized();
 })
