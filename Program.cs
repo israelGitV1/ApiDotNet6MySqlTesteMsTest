@@ -172,7 +172,7 @@ app.MapPost("/veiculo",([FromBody] VeiculoDTO veiculoDTO, IVeiculoServico veicul
   return Results.Created($"/veiculo/{veiculo.Id}",veiculo);
 
 })
-.WithTags("Veiculos");
+.RequireAuthorization().WithTags("Veiculos");
 
 app.MapGet("/veiculos",([FromQuery] int? pagina, IVeiculoServico veiculoServico ) => 
 { 
@@ -180,7 +180,7 @@ app.MapGet("/veiculos",([FromQuery] int? pagina, IVeiculoServico veiculoServico 
     var veiculos = veiculoServico.Todos(pg);
     return Results.Ok(veiculos);
 })
-.WithTags("Veiculos");
+.RequireAuthorization().WithTags("Veiculos");
 
 app.MapGet("/veiculo/{id}",([FromRoute] int id , IVeiculoServico veiculoServico) =>
 {
@@ -194,7 +194,7 @@ app.MapGet("/veiculo/{id}",([FromRoute] int id , IVeiculoServico veiculoServico)
   else
     return Results.NotFound();
 })
-.WithTags("Veiculos");
+.RequireAuthorization().WithTags("Veiculos");
 
 app.MapPut("/veiculo/{id}",([FromRoute] int id, VeiculoDTO veiculoDTO, IVeiculoServico veiculoServico) => 
 {
@@ -215,7 +215,7 @@ app.MapPut("/veiculo/{id}",([FromRoute] int id, VeiculoDTO veiculoDTO, IVeiculoS
   return Results.Ok(veiculo);
 
 })
-.WithTags("Veiculos");
+.RequireAuthorization().WithTags("Veiculos");
 
 app.MapDelete("veiculo/{id}",([FromRoute] int id , IVeiculoServico veiculoServico) =>
 {
@@ -226,7 +226,7 @@ app.MapDelete("veiculo/{id}",([FromRoute] int id , IVeiculoServico veiculoServic
   return Results.NoContent();
 
 })
-.WithTags("Veiculos");
+.RequireAuthorization().WithTags("Veiculos");
 #endregion
 
 
