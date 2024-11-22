@@ -111,7 +111,7 @@ app.MapPost("/administrador",([FromBody] AdministradorDTO administradorDTO, IAdm
   return Results.Created($"/administrador/{administrador.Id}",administrador);
 
 })
-.WithTags("Administradores");
+.RequireAuthorization().WithTags("Administradores");
 
 app.MapDelete("/administrador",([FromBody] LoginDTO loginDTO, IAdministradorServico administradorServico)=>
 {
@@ -122,7 +122,7 @@ app.MapDelete("/administrador",([FromBody] LoginDTO loginDTO, IAdministradorServ
   administradorServico.Excluir(loginDTO);
   return Results.NoContent();
 })
-.WithTags("Administradores");
+.RequireAuthorization().WithTags("Administradores");
 
 app.MapGet("/administrador",([FromQuery] int? pagina ,IAdministradorServico administradorServico) =>
 {
@@ -133,7 +133,7 @@ app.MapGet("/administrador",([FromQuery] int? pagina ,IAdministradorServico admi
 
   return Results.Ok(administradores);
 })
-.WithTags("Administradores");
+.RequireAuthorization().WithTags("Administradores");
 #endregion
 
 #region Veiculos
