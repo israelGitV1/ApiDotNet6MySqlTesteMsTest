@@ -1,9 +1,12 @@
 using System.ComponentModel;
 using System.Security.Cryptography;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.PathSegments;
+using Microsoft.IdentityModel.Tokens;
 using MinimalApi.Dominio.DTOs;
 using MinimalApi.Dominio.Entidades;
 using MinimalApi.Dominio.Interfaces;
@@ -14,6 +17,25 @@ using MinimalApi.Infraestrutura.Db;
 #region Builder
 
 var builder = WebApplication.CreateBuilder(args);
+
+var key = builder.Configuration.GetSection("Jwt").ToString();
+if(string.IsNullOrEmpty(key)) key = "123456";
+
+builder.Services.AddAuthentication(option =>
+{
+  option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+  option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer (option => 
+{
+  option.TokenValidationParameters = new TokenValidationParameters
+  {
+    ValidateLifetime = true,
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
+  };
+});
+
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
 
 builder.Services.AddScoped<IAdministradorServico, AdministradorServico> ();
 builder.Services.AddScoped<IVeiculoServico, VeiculoServico> ();
@@ -26,10 +48,10 @@ builder.Services.AddDbContext<DbContexto>(options =>
 {
   options.UseMySql(stringMySql,ServerVersion.AutoDetect(stringMySql));
 });
-
-var app = builder.Build();
-
 #endregion
+
+#region App
+var app = builder.Build();
 
 #region Home
 app.MapGet("/", () => Results.Json(new Home())).WithTags("Home");
@@ -207,11 +229,12 @@ app.MapDelete("veiculo/{id}",([FromRoute] int id , IVeiculoServico veiculoServic
 .WithTags("Veiculos");
 #endregion
 
-#region App
-
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
 #endregion

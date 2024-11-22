@@ -34,3 +34,10 @@
 /home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /home/israel/DevelopmentClone/MinimalApi/obj/Debug/net6.0/MinimalApi.MvcApplicationPartsAssemblyInfo.cs
+/home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+/home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll
+/home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+/home/israel/DevelopmentClone/MinimalApi/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
