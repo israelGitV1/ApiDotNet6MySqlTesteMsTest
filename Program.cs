@@ -12,6 +12,7 @@ using Microsoft.Extensions.FileSystemGlobbing.Internal.PathSegments;
 using Microsoft.IdentityModel.Tokens;
 using MinimalApi.Dominio.DTOs;
 using MinimalApi.Dominio.Entidades;
+using MinimalApi.Dominio.Enuns;
 using MinimalApi.Dominio.Interfaces;
 using MinimalApi.Dominio.ModelViews;
 using MinimalApi.Dominio.Servicos;
@@ -98,8 +99,8 @@ ErrosDeValidacao ValidaAdministradorDTO (AdministradorDTO administradorDTO)
     validacao.Mensagens.Add("Email não pode ficar em branco. ");
   if(String.IsNullOrEmpty(administradorDTO.Senha))
     validacao.Mensagens.Add("Senha invalida. ");
-  if(String.IsNullOrEmpty(administradorDTO.Perfil))
-    validacao.Mensagens.Add("Perfil não pode ficar em branco. ");
+  if(administradorDTO.Perfil != Perfil.Adm && administradorDTO.Perfil != Perfil.Editor) 
+    validacao.Mensagens.Add("Perfin invalido !(Digite 0 para Administrador OU 1 para Editor)");
 
    return validacao; 
 }
@@ -137,7 +138,7 @@ app.MapPost("/administrador",([FromBody] AdministradorDTO administradorDTO, IAdm
   {
     Email = administradorDTO.Email,
     Senha = administradorDTO.Senha,
-    Perfil = administradorDTO.Perfil,
+    Perfil = administradorDTO.Perfil.ToString()
   };
   administradorServico.Incluir(administrador);
   return Results.Created($"/administrador/{administrador.Id}",new AdministradorModelView
@@ -148,6 +149,7 @@ app.MapPost("/administrador",([FromBody] AdministradorDTO administradorDTO, IAdm
   });
 
 })
+//.RequireAuthorization()
 .RequireAuthorization().WithTags("Administradores");
 
 app.MapDelete("/administrador",([FromBody] LoginDTO loginDTO, IAdministradorServico administradorServico)=>
