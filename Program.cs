@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.PathSegments;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using MinimalApi.Dominio.DTOs;
 using MinimalApi.Dominio.Entidades;
 using MinimalApi.Dominio.Enuns;
@@ -35,6 +37,8 @@ builder.Services.AddAuthentication(option =>
   {
     ValidateLifetime = true,
     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
+    ValidateIssuer = false,
+    ValidateAudience = false,
   };
 });
 
@@ -58,7 +62,7 @@ builder.Services.AddDbContext<DbContexto>(options =>
 var app = builder.Build();
 
 #region Home
-app.MapGet("/", () => Results.Json(new Home())).WithTags("Home");
+app.MapGet("/", () => Results.Json(new Home())).AllowAnonymous().WithTags("Home");
 #endregion
 
 #region Administrador
@@ -126,6 +130,7 @@ app.MapPost("/login",([FromBody] LoginDTO loginDTO , IAdministradorServico admin
     else
         return Results.Unauthorized();
 })
+.AllowAnonymous()
 .WithTags("Administradores");
 
 app.MapPost("/administrador",([FromBody] AdministradorDTO administradorDTO, IAdministradorServico administradorServico) =>
