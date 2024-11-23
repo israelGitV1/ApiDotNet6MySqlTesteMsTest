@@ -49,7 +49,33 @@ builder.Services.AddScoped<IAdministradorServico, AdministradorServico> ();
 builder.Services.AddScoped<IVeiculoServico, VeiculoServico> ();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+  options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+  {
+    Name = "Authorization",
+    Type = SecuritySchemeType.Http,
+    Scheme = "bearer",
+    BearerFormat = "JWT",
+    In = ParameterLocation.Header,
+    Description = "Insira o token JWT",
+  });
+
+  options.AddSecurityRequirement(new OpenApiSecurityRequirement
+  {
+      {
+        new OpenApiSecurityScheme
+        {
+          Reference = new OpenApiReference
+          {
+            Type = ReferenceType.SecurityScheme,
+            Id = "Bearer",
+          }
+        },
+        new string[] {}
+      }
+  });
+});
 
 var stringMySql = builder.Configuration.GetConnectionString("MySql");
 builder.Services.AddDbContext<DbContexto>(options => 
