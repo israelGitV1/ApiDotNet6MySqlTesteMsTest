@@ -11,6 +11,7 @@ namespace MinimalApi.Dominio.Interfaces
     {
          Administrador? Login (LoginDTO loginDTO);
          void Incluir (Administrador administrador);
+         public Administrador? Atualizar (LoginDTO loginDTO,AdministradorDTO administradorDTO);
          bool Excluir (LoginDTO loginDTO);
          List<Administrador>? BuscarTodos (int pagina);
     }
