@@ -186,6 +186,22 @@ app.MapPost("/administrador",([FromBody] AdministradorDTO administradorDTO, IAdm
 .RequireAuthorization(new AuthorizeAttribute {Roles = "Adm"})
 .WithTags("Administradores");
 
+app.MapPut("/administrador",([FromQuery] string email ,string senha, [FromBody] AdministradorDTO administradorDTO, IAdministradorServico administradorServico) =>
+{
+  var validacaoLogin = ValidaLoginDTO(new LoginDTO{Email = email,Senha = senha});
+  var validacaoBodyUpdate = ValidaAdministradorDTO (administradorDTO);
+  if(validacaoLogin.Mensagens.Count > 0 || validacaoBodyUpdate.Mensagens.Count > 0)
+    return Results.BadRequest(new {validacaoLogin,validacaoBodyUpdate});
+
+    var resultado = administradorServico.Atualizar(new LoginDTO{Email = email,Senha = senha},administradorDTO);
+    if(resultado == null)
+      return Results.NoContent();
+    return Results.Ok(resultado);  
+})
+.RequireAuthorization()
+.RequireAuthorization(new AuthorizeAttribute {Roles = "Adm"})
+.WithTags("Administradores");
+
 app.MapDelete("/administrador",([FromBody] LoginDTO loginDTO, IAdministradorServico administradorServico)=>
 {
   var validacao = ValidaLoginDTO(loginDTO);
