@@ -51,5 +51,21 @@ namespace MinimalApi.Dominio.Servicos
             }
                 return false;
         }
+
+        public Administrador? Atualizar(LoginDTO loginDTO,AdministradorDTO administradorDTO)
+        {
+
+            var admAtual = _Contexto.Administradores.Where(adm => adm.Email == loginDTO.Email && adm.Senha == loginDTO.Senha).FirstOrDefault();
+            if(admAtual == null)
+             return admAtual;
+             admAtual.Email = administradorDTO.Email;
+             admAtual.Senha = administradorDTO.Senha;
+             admAtual.Perfil = administradorDTO.Perfil.ToString();
+
+            _Contexto.Administradores.Update(admAtual);
+            _Contexto.SaveChanges();
+            
+            return admAtual;
+        }
     }
 }
