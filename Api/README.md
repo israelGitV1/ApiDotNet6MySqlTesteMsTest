@@ -1,5 +1,5 @@
 # Desenvolvimento Api com DotNet 6.0 
  * Banco de dados MySql
- * Testes com XUnit
+ * Testes com MsTest
  * Entity Framework 
  * Autenticação com 
