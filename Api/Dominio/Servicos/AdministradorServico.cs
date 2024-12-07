@@ -67,5 +67,11 @@ namespace MinimalApi.Dominio.Servicos
             
             return admAtual;
         }
+
+        public Administrador? BuscarPorId(int id)
+        {
+            var administrador = _Contexto.Administradores.Find(id);
+            return administrador;
+        }
     }
 }
