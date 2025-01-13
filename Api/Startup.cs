@@ -89,6 +89,12 @@ namespace Api
             {
             options.UseMySql(stringMySql,ServerVersion.AutoDetect(stringMySql));
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
         }
     
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -97,9 +103,11 @@ namespace Api
             app.UseSwaggerUI();
             
             app.UseRouting();
-
+            
             app.UseAuthentication();
             app.UseAuthorization();
+            
+            app.UseCors("AllowAll");
 
             app.UseEndpoints(endpoint => 
             {
