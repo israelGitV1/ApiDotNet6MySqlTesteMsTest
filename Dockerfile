@@ -12,4 +12,4 @@ RUN dotnet publish -c Release -o /Api/publish
 FROM base AS final
 WORKDIR /Api
 COPY --from=build /Api/publish .
-ENTRYPOINT ["dotnet", "minimalApi.dll"]
+ENTRYPOINT ["dotnet", "MinimalApi.dll"]
