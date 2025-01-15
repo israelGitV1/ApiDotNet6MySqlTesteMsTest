@@ -3,6 +3,10 @@
 <img height="400" src="/Api/preview/preview.gif"/>
 </p>
 
+## Live Link
+
+* ## https://apidotnet6mysqltestemstest.onrender.com
+
 # Introdução
 
 ### Este projeto consiste em uma API mínima desenvolvida com .NET 6, utilizando o Entity Framework como ORM para interagir com o banco de dados MySQL. O sistema é composto por duas tabelas principais:
@@ -33,11 +37,6 @@
 * Demonstrar boas práticas de desenvolvimento utilizando .NET 6, EF Core e autenticação JWT.
 
 Se precisar de ajuda com implementação ou ajustes, é só avisar!
-
-
-## Live Link
-
-* ## https://apidotnet6mysqltestemstest.onrender.com
 
 ## Technologies used
 
