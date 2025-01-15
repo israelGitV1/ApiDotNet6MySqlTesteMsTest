@@ -1,10 +1,6 @@
 # Desenvolvimento Api com DotNet 6.0 
 
-<iframe width="800" height="315" 
-src="https://github.com/israelGitV1/ApiDotNet6MySqlTesteMsTest/blob/main/Api/preview/preview.mp4" 
-title="YouTube video player" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
+[Preview Api](/Api/preview/preview.mp4)
 
 # Introdução
 
@@ -69,7 +65,7 @@ Se precisar de ajuda com implementação ou ajustes, é só avisar!
 1. Clone the project:
 
 ```
- https https://github.com/israelGitV1/ApiDotNet6MySqlTesteMsTest.git
+ git clone https https://github.com/israelGitV1/ApiDotNet6MySqlTesteMsTest.git
 ```
 
 2. Install the dependecies:
