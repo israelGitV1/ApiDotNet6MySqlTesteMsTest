@@ -1,6 +1,6 @@
 # Desenvolvimento Api com DotNet 6.0 
 
-<img src="https://github.com/israelGitV1/ApiDotNet6MySqlTesteMsTest/tree/main/Api/preview/preview.png"
+<img src="https://github.com/israelGitV1/ApiDotNet6MySqlTesteMsTest/tree/main/Api/preview/preview.mp4"
 alt="MimalApiPreview" height="295" width="638">
 
 # Introdução
