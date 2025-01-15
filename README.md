@@ -1,6 +1,6 @@
 # Desenvolvimento Api com DotNet 6.0 
 <p>
-<img height="400" src="https://github.com/israelGitV1/supermarket-list-frontend/blob/master/public/images/demo.gif"/>
+<img height="400" src="/Api/preview/preview.gif"/>
 </p>
 
 # Introdução
