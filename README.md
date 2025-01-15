@@ -53,7 +53,7 @@ Se precisar de ajuda com implementação ou ajustes, é só avisar!
 - .Net6 
 
 - Database Mysql 
-* appsetting.json
+* appsetting.json "na pasta Api e Test"
 ```
  // changes to your connection string
  "ConnectionStrings": {
@@ -72,15 +72,18 @@ Se precisar de ajuda com implementação ou ajustes, é só avisar!
 2. Install the dependecies:
 
 ```
- dotnet builde
+ Cd Api
 ```
 ```
- dotnet ef database update 
+ dotnet restore
 ```
 
 3. Run the project:
 
 ```
- dotnet run
+ Cd Api
+```
+```
+dotnet run
 ```
 
