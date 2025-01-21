@@ -5,7 +5,7 @@
 
 ## Live Link
 
-* ## https://apidotnet6mysqltestemstest.onrender.com
+* ## https://apidotnet6mysqltestemstest.onrender.com/swagger
 
 # Introdução
 
