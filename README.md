@@ -6,6 +6,9 @@
 ## Live Link
 
 * ## https://apidotnet6mysqltestemstest.onrender.com/swagger
+ * Login para gerar o Token.
+    * #### "email": "adm@teste.com"
+    * #### "senha": "string"
 
 # Introdução
 
